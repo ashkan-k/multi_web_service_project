@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace Modules\Ticket\Entities;
 
 use App\Http\Traits\Searchable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TicketFrequentlyAskedQuestion extends Model
 {
@@ -15,4 +15,9 @@ class TicketFrequentlyAskedQuestion extends Model
     protected $search_fields = [
         'title',
     ];
+
+    protected static function newFactory()
+    {
+        return \Modules\Ticket\Database\factories\TicketFrequentlyAskedQuestionFactory::new();
+    }
 }
