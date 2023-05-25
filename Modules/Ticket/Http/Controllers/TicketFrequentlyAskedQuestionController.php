@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace Modules\Ticket\Http\Controllers;
 
 use App\Http\Requests\TicketFrequentlyAskedQuestionRequest;
 use App\Http\Traits\Helpers;
 use App\Http\Traits\Responses;
-use App\Models\TicketFrequentlyAskedQuestion;
-use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Modules\Ticket\Entities\TicketFrequentlyAskedQuestion;
 
-class TicketFrequentlyAskedQuestionController extends Controller
+class TicketFrequentlyAskedQuestionController extends \App\Http\Controllers\Controller
 {
     use Helpers, Responses;
 

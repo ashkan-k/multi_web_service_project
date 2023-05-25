@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Modules\Ticket\Http\Controllers\TicketAnswerController;
+use Modules\Ticket\Http\Controllers\TicketCategoryController;
+use Modules\Ticket\Http\Controllers\TicketController;
+use Modules\Ticket\Http\Controllers\TicketFrequentlyAskedQuestionController;
+use Modules\Ticket\Http\Controllers\TicketSubjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +19,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/ticket', function (Request $request) {
-    return $request->user();
+// Tickets
+Route::group(['prefix' => 'tickets'], function () {
+    // Change Status (By Admin)
+    Route::post('status/change/{ticket}', [TicketController::class, 'change_status']);
+    // Categories
+    Route::apiResource('categories', TicketCategoryController::class);
+    // TicketFrequentlyAskedQuestions
+    Route::apiResource('frequently_asked_questions', TicketFrequentlyAskedQuestionController::class);
+    // TicketSubjects
+    Route::apiResource('subjects', TicketSubjectController::class);
+    // Ticket Answers
+    Route::post('answers/store/{ticket}', [TicketAnswerController::class , 'store']);
+    // Tickets
+    Route::apiResource('', TicketController::class)->parameter('', 'ticket');
 });

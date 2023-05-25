@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace Modules\Ticket\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\TicketAnswerRequest;
 use App\Http\Traits\Responses;
 use App\Http\Traits\Uploader;
-use App\Models\Ticket;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Modules\Ticket\Entities\Ticket;
 
 class TicketAnswerController extends Controller
 {

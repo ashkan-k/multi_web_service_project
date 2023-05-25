@@ -31,20 +31,20 @@ Route::group(['prefix' => 'auth'], function () {
     });
 });
 
-// Tickets
-Route::group(['prefix' => 'tickets', 'middleware' => 'auth:api'], function () {
-    // Change Status (By Admin)
-    Route::post('status/change/{ticket}', [TicketController::class, 'change_status']);
-    // Categories
-    Route::apiResource('categories', TicketCategoryController::class);
-    // TicketFrequentlyAskedQuestions
-    Route::apiResource('frequently_asked_questions', TicketFrequentlyAskedQuestionController::class);
-    // TicketSubjects
-    Route::apiResource('subjects', TicketSubjectController::class);
-    // Ticket Answers
-    Route::post('answers/store/{ticket}', [TicketAnswerController::class , 'store']);
-    // Tickets
-    Route::apiResource('', TicketController::class)->parameter('', 'ticket');
-});
+//// Tickets
+//Route::group(['prefix' => 'tickets', 'middleware' => 'auth:api'], function () {
+//    // Change Status (By Admin)
+//    Route::post('status/change/{ticket}', [TicketController::class, 'change_status']);
+//    // Categories
+//    Route::apiResource('categories', TicketCategoryController::class);
+//    // TicketFrequentlyAskedQuestions
+//    Route::apiResource('frequently_asked_questions', TicketFrequentlyAskedQuestionController::class);
+//    // TicketSubjects
+//    Route::apiResource('subjects', TicketSubjectController::class);
+//    // Ticket Answers
+//    Route::post('answers/store/{ticket}', [TicketAnswerController::class , 'store']);
+//    // Tickets
+//    Route::apiResource('', TicketController::class)->parameter('', 'ticket');
+//});
 
 

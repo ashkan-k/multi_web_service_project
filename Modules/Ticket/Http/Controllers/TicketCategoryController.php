@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace Modules\Ticket\Http\Controllers;
 
 use App\Http\Requests\TicketCategoryRequest;
 use App\Http\Traits\Responses;
-use App\Models\TicketCategory;
-use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Illuminate\Tests\Integration\Database\EloquentHasManyThroughTest\Category;
+use Illuminate\Routing\Controller;
+use Modules\Ticket\Entities\TicketCategory;
 
-class TicketCategoryController extends Controller
+class TicketCategoryController extends \App\Http\Controllers\Controller
 {
     use Responses;
 
