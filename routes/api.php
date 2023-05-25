@@ -32,9 +32,7 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 // Tickets
-Route::group(['prefix' => 'tickets', 'middleware' => 'auth'], function () {
-    // Tickets
-    Route::apiResource('', TicketController::class)->parameter('', 'ticket');
+Route::group(['prefix' => 'tickets'], function () {
     // Change Status (By Admin)
     Route::post('status/change/{ticket}', [TicketController::class, 'change_status']);
     // Categories
@@ -45,6 +43,8 @@ Route::group(['prefix' => 'tickets', 'middleware' => 'auth'], function () {
     Route::apiResource('subjects', TicketSubjectController::class);
     // Ticket Answers
     Route::post('answers/store/{ticket}', [TicketAnswerController::class , 'store']);
+    // Tickets
+    Route::apiResource('', TicketController::class)->parameter('', 'ticket');
 });
 
 
