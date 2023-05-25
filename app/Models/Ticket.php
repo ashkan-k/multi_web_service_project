@@ -29,12 +29,19 @@ class Ticket extends Model
         'ticket_subject.title',
     ];
 
-//    protected $guarded = ['status'];
-
     public function newQuery($excludeDeleted = true) {
         $query = parent::newQuery($excludeDeleted);
         if (!auth()->user()->is_admin) {
             $query = $query->where('user_id', auth()->id());
+        }
+        return $query;
+    }
+
+    public function scopeFilter($query, $request)
+    {
+        $status = $request->status;
+        if ($status) {
+            $query->Where('status', $status);
         }
         return $query;
     }

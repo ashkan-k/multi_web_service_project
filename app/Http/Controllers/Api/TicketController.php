@@ -16,7 +16,9 @@ class TicketController extends Controller
 
     public function index()
     {
-        $ticket_categories = Ticket::Search(\request('search'))->with($this->relations)->paginate(env('PAGINATION_NUMBER', 10));
+        $ticket_categories = Ticket::Search(\request('search'))
+            ->Filter(\request())->with($this->relations)
+            ->paginate(env('PAGINATION_NUMBER', 10));
         return $this->SuccessResponse($ticket_categories);
     }
 

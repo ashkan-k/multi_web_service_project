@@ -32,7 +32,7 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 // Tickets
-Route::group(['prefix' => 'tickets'], function () {
+Route::group(['prefix' => 'tickets', 'middleware' => 'auth'], function () {
     // Change Status (By Admin)
     Route::post('status/change/{ticket}', [TicketController::class, 'change_status']);
     // Categories
