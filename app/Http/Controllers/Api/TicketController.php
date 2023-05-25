@@ -21,7 +21,7 @@ class TicketController extends Controller
     public function store(Request $request)
     {
         $file = $this->UploadFile($request, 'file', 'ticket_files', auth()->id() . '-' . $request->title);
-        $ticket = auth()->user()->tickets()->create(array_merge($request->all(), ['file' => $file]));
+        $ticket = auth()->user()->tickets()->create(array_merge($request->except(['status']), ['file' => $file]));
         return $this->SuccessResponse(Ticket::find($ticket->id), 201);
     }
 
@@ -42,5 +42,11 @@ class TicketController extends Controller
     {
         $ticket->delete();
         return $this->SuccessResponse("آیتم مورد نظر با موفقیت حذف شد.", 204);
+    }
+
+    public function change_status(Request $request, Ticket $ticket)
+    {
+        $ticket->update($request->only(['status']));
+        return $this->SuccessResponse(Ticket::find($ticket->id));
     }
 }

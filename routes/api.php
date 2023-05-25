@@ -34,6 +34,8 @@ Route::group(['prefix' => 'auth'], function () {
 Route::group(['prefix' => 'tickets'], function () {
     // Tickets
     Route::apiResource('/', TicketController::class);
+    // Change Status (By Admin)
+    Route::post('status/change/{ticket}', [TicketController::class, 'change_status']);
     // Categories
     Route::apiResource('categories', TicketCategoryController::class);
     // TicketFrequentlyAskedQuestions

@@ -17,9 +17,10 @@ class Ticket extends Model
         'title',
         'text',
         'file',
+        'status',
     ];
 
-    protected $guarded = ['status'];
+//    protected $guarded = ['status'];
 
     public static function query()
     {

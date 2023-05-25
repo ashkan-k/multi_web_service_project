@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\TicketFrequentlyAskedQuestionRequest;
 use App\Http\Traits\Helpers;
+use App\Http\Traits\Responses;
 use App\Models\TicketFrequentlyAskedQuestion;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class TicketFrequentlyAskedQuestionController extends Controller
 {
-    use Helpers;
+    use Helpers, Responses;
 
     public function index()
     {
