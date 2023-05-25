@@ -17,7 +17,7 @@ class TicketAnswerController extends Controller
     {
         $file = $this->UploadFile($request, 'file' , 'ticket_answers_files', auth()->id() . '-' . $ticket->title);
         $data = [
-            'user_id' => auth('api')->id(),
+            'user_id' => auth()->id(),
             'text' => $request->text,
             'file' => $file,
         ];

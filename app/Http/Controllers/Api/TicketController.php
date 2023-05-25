@@ -27,7 +27,11 @@ class TicketController extends Controller
 
     public function show(Ticket $ticket)
     {
-        return $this->SuccessResponse($ticket);
+        $data = [
+            'ticket' => $ticket,
+            'answers' => $ticket->answers()->with('user'),
+        ];
+        return $this->SuccessResponse($data);
     }
 
     public function update(Request $request, Ticket $ticket)

@@ -34,7 +34,7 @@ Route::group(['prefix' => 'auth'], function () {
 // Tickets
 Route::group(['prefix' => 'tickets'], function () {
     // Tickets
-    Route::apiResource('/', TicketController::class);
+    Route::apiResource('', TicketController::class)->parameter('', 'ticket');
     // Change Status (By Admin)
     Route::post('status/change/{ticket}', [TicketController::class, 'change_status']);
     // Categories
@@ -44,7 +44,7 @@ Route::group(['prefix' => 'tickets'], function () {
     // TicketSubjects
     Route::apiResource('subjects', TicketSubjectController::class);
     // Ticket Answers
-    Route::post('tickets/answers/store/{ticket}', [TicketAnswerController::class , 'store']);
+    Route::post('answers/store/{ticket}', [TicketAnswerController::class , 'store']);
 });
 
 
