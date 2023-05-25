@@ -25,15 +25,15 @@ class TicketFrequentlyAskedQuestionController extends Controller
         return $this->SuccessResponse(TicketFrequentlyAskedQuestion::find($ticketCategory->id), 201);
     }
 
-    public function update(TicketFrequentlyAskedQuestionRequest $request, TicketFrequentlyAskedQuestion $ticketFrequentlyAskedQuestion)
+    public function update(TicketFrequentlyAskedQuestionRequest $request, TicketFrequentlyAskedQuestion $frequently_asked_question)
     {
-        $ticketFrequentlyAskedQuestion->update($request->all());
-        return $this->SuccessResponse(TicketFrequentlyAskedQuestion::find($ticketFrequentlyAskedQuestion->id));
+        $frequently_asked_question->update($request->all());
+        return $this->SuccessResponse(TicketFrequentlyAskedQuestion::find($frequently_asked_question->id));
     }
 
-    public function destroy(TicketFrequentlyAskedQuestion $ticketFrequentlyAskedQuestion)
+    public function destroy(TicketFrequentlyAskedQuestion $frequently_asked_question)
     {
-        $ticketFrequentlyAskedQuestion->delete();
+        $frequently_asked_question->delete();
         return $this->SuccessResponse("آیتم مورد نظر با موفقیت حذف شد.", 204);
     }
 }

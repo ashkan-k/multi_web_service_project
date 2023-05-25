@@ -21,7 +21,7 @@ class TicketRelationsTest extends MainTest
         ];
     }
 
-    private function check_single_response($res_data, $valid_data, $status)
+    private function check_single_response($res_data, $valid_data)
     {
         $this->assertEquals($res_data['title'], $valid_data['title']);
     }
@@ -59,27 +59,46 @@ class TicketRelationsTest extends MainTest
         }
     }
 
-//    public function test_ticket_frequently_asked_list()
-//    {
-//        $response = $this->getJson('/api/tickets/frequently_asked_questions/');
-//        $res_json = $response->json('data')['data'];
-//
-//        $count = TicketFrequentlyAskedQuestion::count();
-//
-//        $response->assertStatus(200);
-//        $this->assertEquals($count, count($res_json));
-//        $this->check_list_json_response($res_json);
-//    }
-//
-//    public function test_ticket_frequently_asked_list()
-//    {
-//        $response = $this->getJson('/api/tickets/frequently_asked_questions/');
-//        $res_json = $response->json('data')['data'];
-//
-//        $count = TicketFrequentlyAskedQuestion::count();
-//
-//        $response->assertStatus(200);
-//        $this->assertEquals($count, count($res_json));
-//        $this->check_list_json_response($res_json);
-//    }
+    public function test_ticket_categories_create()
+    {
+        $data = $this->valid_data;
+        $rows = [
+            'categories' => TicketCategory::class,
+            'frequently_asked_questions' => TicketFrequentlyAskedQuestion::class,
+            'subjects' => TicketSubject::class,
+        ];
+
+        foreach ($rows as $key => $item) {
+            $before_count = $item::count();
+            $response = $this->postJson("/api/tickets/{$key}/", $data);
+            $after_count = $item::count();
+
+            $response->assertStatus(201);
+            $this->check_single_response($response->json('data'), $data);
+            $this->assertEquals($before_count + 1, $after_count);
+        }
+    }
+
+    public function test_ticket_categories_update()
+    {
+        $data = $this->valid_data;
+        $data['title'] = 'this is new title';
+        $rows = [
+            'categories' => TicketCategory::class,
+            'frequently_asked_questions' => TicketFrequentlyAskedQuestion::class,
+            'subjects' => TicketSubject::class,
+        ];
+
+        foreach ($rows as $key => $item) {
+            $item_obj = $item::first();
+
+            $before_count = $item::count();
+            $response = $this->patchJson("/api/tickets/{$key}/{$item_obj->id}/", $data);
+            $after_count = $item::count();
+
+            $response->assertStatus(200);
+            $this->check_single_response($response->json('data'), $data);
+            $this->assertEquals($before_count, $after_count);
+        }
+    }
 }

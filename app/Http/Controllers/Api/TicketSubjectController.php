@@ -25,15 +25,15 @@ class TicketSubjectController extends Controller
         return $this->SuccessResponse(TicketSubject::find($ticketCategory->id), 201);
     }
 
-    public function update(TicketSubjectRequest $request, TicketSubject $ticketSubject)
+    public function update(TicketSubjectRequest $request, TicketSubject $subject)
     {
-        $ticketSubject->update($request->all());
-        return $this->SuccessResponse(TicketSubject::find($ticketSubject->id));
+        $subject->update($request->all());
+        return $this->SuccessResponse(TicketSubject::find($subject->id));
     }
 
-    public function destroy(TicketSubject $ticketSubject)
+    public function destroy(TicketSubject $subject)
     {
-        $ticketSubject->delete();
+        $subject->delete();
         return $this->SuccessResponse("آیتم مورد نظر با موفقیت حذف شد.", 204);
     }
 }
