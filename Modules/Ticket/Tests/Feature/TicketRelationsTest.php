@@ -1,9 +1,11 @@
 <?php
 
-use App\Models\TicketCategory;
-use App\Models\TicketFrequentlyAskedQuestion;
-use App\Models\TicketSubject;
-use Tests\MainTest;
+namespace Modules\Ticket\Tests\Feature;
+
+use Modules\Ticket\Entities\TicketCategory;
+use Modules\Ticket\Entities\TicketFrequentlyAskedQuestion;
+use Modules\Ticket\Entities\TicketSubject;
+use Modules\Ticket\Tests\MainTest;
 
 class TicketRelationsTest extends MainTest
 {

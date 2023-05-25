@@ -1,15 +1,12 @@
 <?php
 
+namespace Modules\Ticket\Tests\Feature;
 
-namespace Tests\Feature;
-
-
-use App\Models\Ticket;
-use App\Models\TicketAnswer;
-use App\Models\TicketCategory;
-use App\Models\TicketFrequentlyAskedQuestion;
-use App\Models\TicketSubject;
-use Tests\MainTest;
+use Modules\Ticket\Entities\Ticket;
+use Modules\Ticket\Entities\TicketCategory;
+use Modules\Ticket\Entities\TicketFrequentlyAskedQuestion;
+use Modules\Ticket\Entities\TicketSubject;
+use Modules\Ticket\Tests\MainTest;
 
 class TicketTest extends MainTest
 {

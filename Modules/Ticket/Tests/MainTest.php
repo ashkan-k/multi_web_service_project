@@ -1,23 +1,22 @@
 <?php
 
-namespace Tests;
+namespace Modules\Ticket\Tests;
 
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class MainTest extends TestCase
 {
-   public function setUp(): void
-   {
-       parent::setUp();
-       $this->Init();
-   }
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->Init();
+    }
 
-   //
+    //
 
     private function Init()
     {
