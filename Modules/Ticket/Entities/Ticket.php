@@ -45,6 +45,27 @@ class Ticket extends Model
         if ($status) {
             $query->Where('status', $status);
         }
+
+        $user = $request->user;
+        if ($status) {
+            $query->Where('user_id', $user);
+        }
+
+        $ticket_category = $request->ticket_category;
+        if ($ticket_category) {
+            $query->Where('ticket_category_id', $ticket_category);
+        }
+
+        $ticket_frequently_asked = $request->ticket_frequently_asked;
+        if ($ticket_frequently_asked) {
+            $query->Where('ticket_frequently_asked_id', $ticket_frequently_asked);
+        }
+
+        $ticket_subject = $request->ticket_subject;
+        if ($ticket_subject) {
+            $query->Where('ticket_subject_id', $ticket_subject);
+        }
+
         return $query;
     }
 

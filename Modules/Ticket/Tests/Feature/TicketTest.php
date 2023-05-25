@@ -83,17 +83,24 @@ class TicketTest extends MainTest
         $this->check_list_json_response($res_json['data']);
     }
 
-//    public function test_user_tickets_list_type_filter()
-//    {
-//        foreach (['user' => $this->valid_data['user_id'], 'category' => $this->valid_data['ticket_category_id']] as $key => $value){
-//            $response = $this->getJson("/api/tickets/?{$key}=" . $key);
-//            $res_json = $response->json('data');
-//
-//            $response->assertStatus(200);
-////            $this->assertTrue($res_json->isEmpty());
-//            $this->assertEquals(count($res_json['data']), 1);
-//        }
-//    }
+    public function test_user_tickets_list_type_filter()
+    {
+        $filters = [
+            'user' => $this->valid_data['user_id'],
+            'category' => $this->valid_data['ticket_category_id'],
+            'ticket_frequently_asked' => $this->valid_data['ticket_frequently_asked_id'],
+            'ticket_subject' => $this->valid_data['ticket_subject_id'],
+        ];
+
+        foreach ($filters as $key => $value){
+            $response = $this->getJson("/api/tickets/?{$key}=" . $value);
+            $res_json = $response->json('data');
+
+            $response->assertStatus(200);
+//            $this->assertTrue($res_json->isEmpty());
+            $this->assertEquals(count($res_json['data']), 1);
+        }
+    }
 
     public function test_user_ticket_create()
     {
