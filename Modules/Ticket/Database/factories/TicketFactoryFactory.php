@@ -1,22 +1,26 @@
 <?php
 
-namespace Database\Factories;
+namespace Modules\Ticket\Database\factories;
 
-use App\Models\TicketCategory;
-use App\Models\TicketFrequentlyAskedQuestion;
-use App\Models\TicketSubject;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Ticket\Entities\TicketCategory;
+use Modules\Ticket\Entities\TicketFrequentlyAskedQuestion;
+use Modules\Ticket\Entities\TicketSubject;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\=Ticket>
- */
-class TicketFactory extends Factory
+class TicketFactoryFactory extends Factory
 {
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = \Modules\Ticket\Entities\TicketFactory::class;
+
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return array
      */
     public function definition()
     {
@@ -32,3 +36,4 @@ class TicketFactory extends Factory
         ];
     }
 }
+
