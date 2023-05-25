@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\EnumHelpers;
+use Modules\Ticket\Enums\EnumHelpers;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
