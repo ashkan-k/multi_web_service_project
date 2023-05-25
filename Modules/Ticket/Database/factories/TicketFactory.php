@@ -8,14 +8,14 @@ use Modules\Ticket\Entities\TicketCategory;
 use Modules\Ticket\Entities\TicketFrequentlyAskedQuestion;
 use Modules\Ticket\Entities\TicketSubject;
 
-class TicketFactoryFactory extends Factory
+class TicketFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = \Modules\Ticket\Entities\TicketFactory::class;
+    protected $model = \Modules\Ticket\Entities\Ticket::class;
 
     /**
      * Define the model's default state.
