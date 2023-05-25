@@ -13,29 +13,22 @@ use Illuminate\Support\Facades\Validator;
 class AuthController extends Controller
 {
     //
-    public function login (Request $request) {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|string|email|max:255',
-            'password' => 'required|string|confirmed',
+    public function login(Request $request)
+    {
+        $data = $request->validate([
+            'email' => 'email|required',
+            'password' => 'required'
         ]);
-        if ($validator->fails())
-        {
-            return response(['errors'=>$validator->errors()->all()], 422);
+
+        if (!auth()->attempt($data)) {
+            return response(['error_message' => 'Incorrect Details.
+            Please try again']);
         }
-        $user = User::where('email', $request->email)->first();
-        if ($user) {
-            if (Hash::check($request->password, $user->password)) {
-                $token = $user->createToken('Laravel Password Grant Client');
-                $response = ['token' => $token];
-                return response($response, 200);
-            } else {
-                $response = ["message" => "Password mismatch"];
-                return response($response, 422);
-            }
-        } else {
-            $response = ["message" =>'User does not exist'];
-            return response($response, 422);
-        }
+
+        $token = auth()->user()->createToken('API Token');
+
+        return response(['user' => auth()->user(), 'token' => $token]);
+
     }
 
     public function register(Request $request)

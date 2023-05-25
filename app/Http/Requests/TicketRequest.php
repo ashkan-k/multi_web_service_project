@@ -33,7 +33,7 @@ class TicketRequest extends FormRequest
             'ticket_frequently_asked_id' => 'required|exists:ticket_frequently_asked_questions,id',
             'ticket_subject_id' => 'required|exists:ticket_subjects,id',
             'file' => 'file|mimes:pdf,jpg,png,word,excel',
-            'status' => 'in:waiting,pending,support_response,user_response,done,close',
+//            'status' => 'in:waiting,pending,support_response,user_response,done,close',
         ];
     }
 
