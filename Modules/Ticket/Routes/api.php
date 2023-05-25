@@ -20,7 +20,7 @@ use Modules\Ticket\Http\Controllers\TicketSubjectController;
 */
 
 // Tickets
-Route::group(['prefix' => 'tickets'], function () {
+Route::group(['prefix' => 'tickets', 'middleware' => 'auth:api'], function () {
     // Change Status (By Admin)
     Route::post('status/change/{ticket}', [TicketController::class, 'change_status']);
     // Categories
