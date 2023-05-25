@@ -35,9 +35,31 @@ class Ticket extends Model
     {
         $query = parent::query();
         // TODO: Check if use is not admin, show only current user tickets
-        if (!auth()->user()->is_admin){
+        if (!auth()->user()->is_admin) {
             $query = $query->where('user_id', auth()->id());
         }
         return $query;
+    }
+
+    //
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function ticket_category()
+    {
+        return $this->belongsTo(TicketCategory::class);
+    }
+
+    public function ticket_frequently_asked()
+    {
+        return $this->belongsTo(TicketFrequentlyAskedQuestion::class);
+    }
+
+    public function ticket_subject()
+    {
+        return $this->belongsTo(TicketSubject::class);
     }
 }
