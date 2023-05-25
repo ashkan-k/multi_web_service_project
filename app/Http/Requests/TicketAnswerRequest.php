@@ -27,6 +27,7 @@ class TicketAnswerRequest extends FormRequest
     {
         return [
             'text' => 'required',
+            'file' => 'file|mimes:pdf,jpg,png,word,excel',
         ];
     }
 
