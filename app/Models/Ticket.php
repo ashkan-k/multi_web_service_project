@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Http\Traits\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
     protected $fillable = [
         'user_id',
@@ -18,6 +19,14 @@ class Ticket extends Model
         'text',
         'file',
         'status',
+    ];
+
+    protected $search_fields = [
+        'title',
+        'text',
+        'ticket_category.title',
+        'ticket_frequently_asked.title',
+        'ticket_subject.title',
     ];
 
 //    protected $guarded = ['status'];

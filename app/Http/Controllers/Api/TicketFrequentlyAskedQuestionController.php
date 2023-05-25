@@ -15,7 +15,7 @@ class TicketFrequentlyAskedQuestionController extends Controller
 
     public function index()
     {
-        $ticketFrequentlyAskedQuestions = TicketFrequentlyAskedQuestion::paginate(env('PAGINATION_NUMBER', 10));
+        $ticketFrequentlyAskedQuestions = TicketFrequentlyAskedQuestion::Search(\request('search'))->paginate(env('PAGINATION_NUMBER', 10));
         return $this->SuccessResponse($ticketFrequentlyAskedQuestions);
     }
 

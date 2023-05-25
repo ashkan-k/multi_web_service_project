@@ -10,4 +10,8 @@ class TicketSubject extends Model
     use HasFactory;
 
     protected $fillable = ['title'];
+
+    protected $search_fields = [
+        'title',
+    ];
 }
