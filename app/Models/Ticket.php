@@ -20,4 +20,14 @@ class Ticket extends Model
     ];
 
     protected $guarded = ['status'];
+
+    public static function query()
+    {
+        $query = parent::query();
+        // TODO: Check if use is not admin, show only current user tickets
+        if (!auth()->user()->is_admin){
+            $query = $query->where('user_id', auth()->id());
+        }
+        return $query;
+    }
 }

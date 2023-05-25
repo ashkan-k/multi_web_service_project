@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\TicketCategoryController;
+use App\Http\Controllers\Api\TicketController;
 use App\Http\Controllers\Api\TicketFrequentlyAskedQuestionController;
 use App\Http\Controllers\Api\TicketSubjectController;
 use App\Http\Controllers\Auth\AuthController;
@@ -31,6 +32,8 @@ Route::group(['prefix' => 'auth'], function () {
 
 // Tickets
 Route::group(['prefix' => 'tickets'], function () {
+    // Tickets
+    Route::apiResource('/', TicketController::class);
     // Categories
     Route::apiResource('categories', TicketCategoryController::class);
     // TicketFrequentlyAskedQuestions
