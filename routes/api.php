@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\TicketAnswerController;
 use App\Http\Controllers\Api\TicketCategoryController;
 use App\Http\Controllers\Api\TicketController;
 use App\Http\Controllers\Api\TicketFrequentlyAskedQuestionController;
@@ -42,6 +43,8 @@ Route::group(['prefix' => 'tickets'], function () {
     Route::apiResource('frequently_asked_questions', TicketFrequentlyAskedQuestionController::class);
     // TicketSubjects
     Route::apiResource('subjects', TicketSubjectController::class);
+    // Ticket Answers
+    Route::post('tickets/answers/store/{ticket}', [TicketAnswerController::class , 'store']);
 });
 
 
