@@ -51,6 +51,8 @@ class TicketTest extends MainTest
         $this->assertArrayHasKey('file', $res_data);
         $this->assertEquals($res_data['user_id'], auth()->id());
         $this->assertEquals($res_data['ticket_category_id'], $valid_data['ticket_category_id']);
+        $this->assertEquals($res_data['ticket_frequently_asked_id'], $valid_data['ticket_frequently_asked_id']);
+        $this->assertEquals($res_data['ticket_subject_id'], $valid_data['ticket_subject_id']);
     }
 
     private function check_list_json_response($res_json)
@@ -58,8 +60,11 @@ class TicketTest extends MainTest
         foreach ($res_json as $item) {
             $this->assertArrayHasKey('title', $item);
             $this->assertArrayHasKey('text', $item);
-            $this->assertArrayHasKey('user_id', $item);
-            $this->assertArrayHasKey('ticket_category_id', $item);
+            $this->assertArrayHasKey('user', $item);
+            $this->assertArrayHasKey('ticket_category', $item);
+            $this->assertArrayHasKey('ticket_frequently_asked', $item);
+            $this->assertArrayHasKey('ticket_subject', $item);
+            $this->assertArrayHasKey('answers', $item);
             $this->assertArrayHasKey('status', $item);
             $this->assertArrayHasKey('file', $item);
         }

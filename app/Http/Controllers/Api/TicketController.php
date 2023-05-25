@@ -12,9 +12,11 @@ class TicketController extends Controller
 {
     use Responses, Uploader;
 
+    protected $relations = ['user', 'ticket_category', 'ticket_frequently_asked', 'ticket_subject', 'answers'];
+
     public function index()
     {
-        $ticket_categories = Ticket::Search(\request('search'))->paginate(env('PAGINATION_NUMBER', 10));
+        $ticket_categories = Ticket::Search(\request('search'))->with($this->relations)->paginate(env('PAGINATION_NUMBER', 10));
         return $this->SuccessResponse($ticket_categories);
     }
 
